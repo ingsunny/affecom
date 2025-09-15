@@ -74,22 +74,21 @@ const components = [
 
 export default function Header() {
   return (
-    <NavigationMenu className={"m-auto max-w-6xl"} viewport={false}>
-      <NavigationMenuList className={"py-5 gap-4"}>
+    <NavigationMenu className={"m-auto max-w-6xl z-50"} viewport={false}>
+      <NavigationMenuList className={"py-5 "}>
         <AnimatedSidebar />
-        <div className="">
+        <div className="pl-2 pr-4">
           <Image
             className="w-10 h-auto"
-            src={"/logo.jpg"}
+            src={"/easyshop.png"}
             height={1000}
             width={1000}
             alt={"logo"}
           />
-          {/* <h3 className="text-2xl font-semibold">EasyShop</h3> */}
         </div>
         <div className="">
           <div
-            className={`relative transition-all duration-700 w-xl border-none`}
+            className={`relative transition-all duration-700 w-[730px] border-none`}
             style={{ transitionDelay: "500ms" }}
           >
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -103,7 +102,9 @@ export default function Header() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            className={" hover:bg-[#f2f2ec] text-black hover:text-black"}
+            className={
+              " hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
+            }
           >
             Brands
           </NavigationMenuTrigger>
@@ -133,14 +134,16 @@ export default function Header() {
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild
-            className={`${navigationMenuTriggerStyle()} hover:bg-[#f2f2ec] text-black hover:text-black`}
+            className={`${navigationMenuTriggerStyle()} hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90 hover:text-black/90`}
           >
             <Link href="/shop">Shop</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger
-            className={"hover:bg-[#f2f2ec] text-black hover:text-black"}
+            className={
+              "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
+            }
           >
             Welcome
           </NavigationMenuTrigger>

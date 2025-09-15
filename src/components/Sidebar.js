@@ -141,7 +141,7 @@ export default function AnimatedSidebar() {
 
       <SheetContent
         side="left"
-        className="w-80 p-0 border-r-0 shadow-2xl bg-gradient-to-br from-primary to-secondary"
+        className="w-80 p-0 border-r-0 shadow-2xl bg-gradient-to-br bg-primary"
       >
         {/* Animated Background Circles */}
         <div className="absolute inset-0 overflow-hidden">
