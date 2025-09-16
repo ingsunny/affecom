@@ -27,91 +27,91 @@ const categories = [
     name: "Dog Food & Treats",
     icon: Dog,
     color: "text-amber-500",
-    href: "/category/dog-food-treats",
+    href: "/shop/category/dog-food-treats",
   },
   {
     name: "Tough Chewer Dog Toys",
     icon: Dog,
     color: "text-blue-500",
-    href: "/category/tough-chewer-toys",
+    href: "/shop/category/tough-chewer-toys",
   },
   {
     name: "Pet Grooming Supplies",
     icon: Scissors,
     color: "text-pink-500",
-    href: "/category/pet-grooming",
+    href: "/shop/category/pet-grooming",
   },
   {
     name: "Interactive Cat Toys",
     icon: Cat,
     color: "text-purple-500",
-    href: "/category/cat-toys",
+    href: "/shop/category/cat-toys",
   },
   {
     name: "Electronics",
     icon: Smartphone,
     color: "text-indigo-500",
-    href: "/category/electronics",
+    href: "/shop/category/electronics",
   },
   {
     name: "Men's Clothing",
     icon: Shirt,
     color: "text-blue-600",
-    href: "/category/mens-clothing",
+    href: "/shop/category/mens-clothing",
   },
   {
     name: "Women's Clothing",
     icon: Shirt,
     color: "text-pink-600",
-    href: "/category/womens-clothing",
+    href: "/shop/category/womens-clothing",
   },
   {
     name: "Kitchen & Dining",
     icon: Utensils,
     color: "text-orange-500",
-    href: "/category/kitchen-dining",
+    href: "/shop/category/kitchen-dining",
   },
   {
     name: "Home Office Essentials",
     icon: Monitor,
     color: "text-gray-600",
-    href: "/category/home-office",
+    href: "/shop/category/home-office",
   },
   {
     name: "Skincare & Beauty",
     icon: Sparkles,
     color: "text-rose-500",
-    href: "/category/skincare-beauty",
+    href: "/shop/category/skincare-beauty",
   },
   {
     name: "Vitamins & Supplements",
     icon: Pill,
     color: "text-green-500",
-    href: "/category/vitamins-supplements",
+    href: "/shop/category/vitamins-supplements",
   },
   {
     name: "Baby Essentials",
     icon: Baby,
     color: "text-yellow-500",
-    href: "/category/baby-essentials",
+    href: "/shop/category/baby-essentials",
   },
   {
     name: "Smart Home Devices",
     icon: Lightbulb,
     color: "text-cyan-500",
-    href: "/category/smart-home",
+    href: "/shop/category/smart-home",
   },
   {
     name: "Home Organization",
     icon: FolderOpen,
     color: "text-teal-500",
-    href: "/category/home-organization",
+    href: "/shop/category/home-organization",
   },
   {
     name: "At-Home Fitness Equipment",
     icon: Dumbbell,
     color: "text-red-500",
-    href: "/category/fitness-equipment",
+    href: "/shop/category/fitness-equipment",
   },
 ];
 
@@ -228,7 +228,7 @@ export default function AnimatedSidebar() {
                 return (
                   <Link
                     key={category.name}
-                    href={category.href}
+                    href={`/shop/category/${category.name}`}
                     onClick={() => setIsOpen(false)}
                     className={`group flex items-center space-x-3 p-3 rounded-xl bg-white/10 hover:bg-white/20 cursor-pointer transition-all duration-500 hover:translate-x-2 ${
                       isOpen

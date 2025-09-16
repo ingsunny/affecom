@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import AnimatedSidebar from "./Sidebar";
+import { Separator } from "./ui/separator";
 
 const components = [
   {
@@ -74,10 +75,10 @@ const components = [
 
 export default function Header() {
   return (
-    <NavigationMenu className={"m-auto max-w-6xl z-50"} viewport={false}>
-      <NavigationMenuList className={"py-5 "}>
+    <NavigationMenu className={"m-auto max-w-[85vw] z-50"} viewport={false}>
+      <div className={"py-5 flex list-none w-full"}>
         <AnimatedSidebar />
-        <div className="pl-2 pr-4">
+        <Link href={"/"} className="pl-2 pr-4">
           <Image
             className="w-10 h-auto"
             src={"/easyshop.png"}
@@ -85,17 +86,17 @@ export default function Header() {
             width={1000}
             alt={"logo"}
           />
-        </div>
-        <div className="">
+        </Link>
+        <div className="flex-1">
           <div
-            className={`relative transition-all duration-700 w-[730px] border-none`}
+            className={`relative transition-all duration-700 border-none`}
             style={{ transitionDelay: "500ms" }}
           >
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
               type="text"
               placeholder="Search products..."
-              className="pl-10 focus-visible:ring-[0px]  border-gray-300 shadow-none  placeholder:text-gray-500"
+              className="w-full pl-10 focus-visible:ring-[0px] border-gray-300 shadow-none  placeholder:text-gray-500"
             />
           </div>
         </div>
@@ -103,38 +104,64 @@ export default function Header() {
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={
-              " hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
+              "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
             }
           >
-            Brands
+            Brand
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mt-4 mb-2 text-lg font-medium">
-                      shop by brand
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      Beautifully curated prodcut
-                    </p>
-                  </a>
+            <ul className="grid w-[200px] gap-4">
+              <li>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="#" className="">
+                    BestBuy
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="#">Home Depot</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="#">Whirlpool</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="#">Petco</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="#">Philips</Link>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="#" title="Introduction">
-                make it Beautifully by brand
-              </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild
-            className={`${navigationMenuTriggerStyle()} hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90 hover:text-black/90`}
+            className={`${navigationMenuTriggerStyle()} text-[16px] font-semibold text-black/90 hover:text-black/90`}
           >
             <Link href="/shop">Shop</Link>
           </NavigationMenuLink>
@@ -150,17 +177,27 @@ export default function Header() {
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-4">
               <li>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
                   <Link href="#">Login</Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
                   <Link href="#">Signup</Link>
                 </NavigationMenuLink>
               </li>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-      </NavigationMenuList>
+      </div>
     </NavigationMenu>
   );
 }

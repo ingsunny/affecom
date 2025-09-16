@@ -6,136 +6,16 @@ import { Badge } from "@/components/ui/badge";
 import { Star, ShoppingBag, Truck, Shield, Headphones } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import categories from "@/data/categories";
 
 export default function Home() {
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "Premium Wireless Headphones",
-      price: 199.99,
-      originalPrice: 249.99,
-      rating: 4.8,
-      reviews: 1247,
-      image: "/product_img/headphone.webp",
-      badge: "Best Seller",
-      amazonLink: "https://amazon.com/product1",
-    },
-    {
-      id: 2,
-      name: "Smart Fitness Watch",
-      price: 299.99,
-      originalPrice: 399.99,
-      rating: 4.6,
-      reviews: 892,
-      image: "/product_img/headphone.webp",
-      badge: "25% OFF",
-      amazonLink: "https://amazon.com/product2",
-    },
-    {
-      id: 3,
-      name: "Portable Bluetooth Speaker",
-      price: 79.99,
-      originalPrice: 99.99,
-      rating: 4.7,
-      reviews: 2156,
-      image: "/product_img/headphone.webp",
-      badge: "Limited Time",
-      amazonLink: "https://amazon.com/product3",
-    },
-    {
-      id: 4,
-      name: "Wireless Charging Pad",
-      price: 39.99,
-      originalPrice: 59.99,
-      rating: 4.5,
-      reviews: 634,
-      image: "/product_img/headphone.webp",
-      badge: "New Arrival",
-      amazonLink: "https://amazon.com/product4",
-    },
-  ];
-
-  const categories = [
-    {
-      name: "Electronics",
-      image: "/category/electronics.avif",
-      href: "/categories/electronics",
-    },
-    {
-      name: "Home & Garden",
-      image: "/category/home-n-garden.avif",
-      href: "/categories/home-garden",
-    },
-    {
-      name: "Fashion",
-      image: "/category/fashion.avif",
-      href: "/categories/fashion",
-    },
-    {
-      name: "Sports & Outdoors",
-      image: "/category/sport.avif",
-      href: "/categories/sports",
-    },
-    {
-      name: "Health & Beauty",
-      image: "/category/health-n-beauty.avif",
-      href: "/categories/health",
-    },
-    {
-      name: "Dogs Food & Treat",
-      image: "/category/dog-food.jpg",
-      href: "/categories/books",
-    },
-    {
-      name: "Home & Garden",
-      image: "/category/home-n-garden.avif",
-      href: "/categories/home-garden",
-    },
-    {
-      name: "Fashion",
-      image: "/category/fashion.avif",
-      href: "/categories/fashion",
-    },
-    {
-      name: "Sports & Outdoors",
-      image: "/category/sport.avif",
-      href: "/categories/sports",
-    },
-    {
-      name: "Health & Beauty",
-      image: "/category/health-n-beauty.avif",
-      href: "/categories/health",
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      rating: 5,
-      comment:
-        "Amazing products and fast delivery! I found exactly what I was looking for at great prices.",
-      avatar: "/diverse-woman-avatar.png",
-    },
-    {
-      name: "Mike Chen",
-      rating: 5,
-      comment:
-        "The product recommendations are spot on. Saved me hours of research and got the best deals.",
-      avatar: "/man-avatar.png",
-    },
-    {
-      name: "Emily Davis",
-      rating: 4,
-      comment:
-        "Great selection and honest reviews. The affiliate links make shopping so much easier.",
-      avatar: "/woman-avatar-2.png",
-    },
-  ];
+  const router = useRouter();
 
   return (
     <div className="min-h-screen ">
       {/* Hero section  */}
-      <section className="relative h-[190px]">
+      <section className="relative h-[200px]">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src="/hero3.mp4"
@@ -148,7 +28,7 @@ export default function Home() {
         {/* Black overlay with opacity */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
 
-        <div className="relative max-w-6xl mx-auto flex items-center justify-between h-full px-4 pt-4">
+        <div className="relative max-w-[85vw] mx-auto flex items-center justify-between h-full px-4 pt-4">
           <div className="h-fit">
             <h1 className="text-4xl md:text-4xl font-bold text-white mb-2 text-balance">
               Discover Amazing Products at <br /> Unbeatable Prices
@@ -159,11 +39,16 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-col gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8">
+            <Button
+              onClick={() => router.push("/shop")}
+              size="lg"
+              className="text-lg px-8"
+            >
               <ShoppingBag className="mr-2 h-5 w-5" />
               Shop Now
             </Button>
             <Button
+              onClick={() => router.push("#categories")}
               size="lg"
               className="hover:bg-[#f2f2ec] text-lg px-8 text-black/90 bg-white"
             >
@@ -209,7 +94,7 @@ export default function Home() {
 
       {/* Categories Section */}
       <section className="py-12 bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-[85vw] mx-auto px-4">
           <div className="text- mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Shop by Category
@@ -218,12 +103,18 @@ export default function Home() {
               Explore our wide range of product categories
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
             {categories.map((category) => (
-              <Link key={category.name} href={category.href}>
+              <Link
+                className=""
+                key={category.id}
+                href={`/shop/category/${category.name}`}
+              >
                 <Card
-                  className={`hover:shadow-lg h-[200px] w-[200px] flex justify-end transition-shadow cursor-pointer bg-cover`}
-                  style={{ backgroundImage: `url(${category.image})` }}
+                  className={`hover:shadow-lg h-[200px] w-full transition-shadow cursor-pointer bg-cover`}
+                  style={{
+                    backgroundImage: `url(${category.image || "place.png"})`,
+                  }}
                 ></Card>
                 <h3 className="font-semibold text-md text-center p-1 ">
                   {category.name}
@@ -236,7 +127,7 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-[85vw] mx-auto px-4">
           <div className="text- mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Featured Products
@@ -371,3 +262,127 @@ export default function Home() {
     </div>
   );
 }
+
+const featuredProducts = [
+  {
+    id: 1,
+    name: "Premium Wireless Headphones",
+    price: 199.99,
+    originalPrice: 249.99,
+    rating: 4.8,
+    reviews: 1247,
+    image: "/product_img/headphone.webp",
+    badge: "Best Seller",
+    amazonLink: "https://amazon.com/product1",
+  },
+  {
+    id: 2,
+    name: "Smart Fitness Watch",
+    price: 299.99,
+    originalPrice: 399.99,
+    rating: 4.6,
+    reviews: 892,
+    image: "/product_img/headphone.webp",
+    badge: "25% OFF",
+    amazonLink: "https://amazon.com/product2",
+  },
+  {
+    id: 3,
+    name: "Portable Bluetooth Speaker",
+    price: 79.99,
+    originalPrice: 99.99,
+    rating: 4.7,
+    reviews: 2156,
+    image: "/product_img/headphone.webp",
+    badge: "Limited Time",
+    amazonLink: "https://amazon.com/product3",
+  },
+  {
+    id: 4,
+    name: "Wireless Charging Pad",
+    price: 39.99,
+    originalPrice: 59.99,
+    rating: 4.5,
+    reviews: 634,
+    image: "/product_img/headphone.webp",
+    badge: "New Arrival",
+    amazonLink: "https://amazon.com/product4",
+  },
+];
+
+// const categories = [
+//   {
+//     name: "Electronics",
+//     image: "/category/electronics.avif",
+//     href: "/categories/electronics",
+//   },
+//   {
+//     name: "Home & Garden",
+//     image: "/category/home-n-garden.avif",
+//     href: "/categories/home-garden",
+//   },
+//   {
+//     name: "Fashion",
+//     image: "/category/fashion.avif",
+//     href: "/categories/fashion",
+//   },
+//   {
+//     name: "Sports & Outdoors",
+//     image: "/category/sport.avif",
+//     href: "/categories/sports",
+//   },
+//   {
+//     name: "Health & Beauty",
+//     image: "/category/health-n-beauty.avif",
+//     href: "/categories/health",
+//   },
+//   {
+//     name: "Dogs Food & Treat",
+//     image: "/category/dog-food.jpg",
+//     href: "/categories/books",
+//   },
+//   {
+//     name: "Home & Garden",
+//     image: "/category/home-n-garden.avif",
+//     href: "/categories/home-garden",
+//   },
+//   {
+//     name: "Fashion",
+//     image: "/category/fashion.avif",
+//     href: "/categories/fashion",
+//   },
+//   {
+//     name: "Sports & Outdoors",
+//     image: "/category/sport.avif",
+//     href: "/categories/sports",
+//   },
+//   {
+//     name: "Health & Beauty",
+//     image: "/category/health-n-beauty.avif",
+//     href: "/categories/health",
+//   },
+// ];
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    rating: 5,
+    comment:
+      "Amazing products and fast delivery! I found exactly what I was looking for at great prices.",
+    avatar: "/diverse-woman-avatar.png",
+  },
+  {
+    name: "Mike Chen",
+    rating: 5,
+    comment:
+      "The product recommendations are spot on. Saved me hours of research and got the best deals.",
+    avatar: "/man-avatar.png",
+  },
+  {
+    name: "Emily Davis",
+    rating: 4,
+    comment:
+      "Great selection and honest reviews. The affiliate links make shopping so much easier.",
+    avatar: "/woman-avatar-2.png",
+  },
+];
