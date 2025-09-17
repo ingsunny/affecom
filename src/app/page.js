@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className="min-h-screen ">
       {/* Hero section  */}
-      <section className="relative h-[200px]">
+      <section className="relative sm:h-[200px]">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src="/hero3.mp4"
@@ -28,21 +28,21 @@ export default function Home() {
         {/* Black overlay with opacity */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
 
-        <div className="relative max-w-[85vw] mx-auto flex items-center justify-between h-full px-4 pt-4">
-          <div className="h-fit">
-            <h1 className="text-4xl md:text-4xl font-bold text-white mb-2 text-balance">
+        <div className="relative max-w-[98vw] lg:max-w-[85vw] mx-auto flex flex-col sm:flex-row items-center justify-between h-full px-2 lg:px-4 pt-4 pb-6 sm:pb-0">
+          <div className="text-center sm:text-left">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2 text-balance">
               Discover Amazing Products at <br /> Unbeatable Prices
             </h1>
-            <p className="text-lg text-white mb-8 max-w-2xl mx- text-pretty">
+            <p className="text-md md:text-lg text-white mb-8 max-w-2xl mx- text-pretty">
               Find the best deals on top-rated products from trusted brands.
               Compare prices and read real reviews.
             </p>
           </div>
-          <div className="flex flex-col gap-4 justify-center">
+          <div className="flex w-fit flex-col gap-4 justify-center">
             <Button
               onClick={() => router.push("/shop")}
               size="lg"
-              className="text-lg px-8"
+              className="text-md sm:text-lg px-8"
             >
               <ShoppingBag className="mr-2 h-5 w-5" />
               Shop Now
@@ -50,7 +50,7 @@ export default function Home() {
             <Button
               onClick={() => router.push("#categories")}
               size="lg"
-              className="hover:bg-[#f2f2ec] text-lg px-8 text-black/90 bg-white"
+              className="hover:bg-[#f2f2ec] text-md sm:text-lg px-8 text-black/90 bg-white"
             >
               View Categories
             </Button>
@@ -75,7 +75,7 @@ export default function Home() {
           />
         </div>
         <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-center gap-8 text-sm font-medium">
+          <div className="flex sm:flex-row flex-col items-center justify-center gap-8 text-sm font-medium">
             <div className="flex items-center gap-2">
               <Truck className="h-4 w-4" />
               Free Shipping on Orders $50+
@@ -94,7 +94,7 @@ export default function Home() {
 
       {/* Categories Section */}
       <section className="py-12 bg-muted/30">
-        <div className="max-w-[85vw] mx-auto px-4">
+        <div className="max-w-[98vw] lg:max-w-[85vw] mx-auto px-4">
           <div className="text- mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Shop by Category
@@ -103,7 +103,7 @@ export default function Home() {
               Explore our wide range of product categories
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-10">
             {categories.map((category) => (
               <Link
                 className=""
@@ -111,7 +111,7 @@ export default function Home() {
                 href={`/shop/category/${category.name}`}
               >
                 <Card
-                  className={`hover:shadow-lg h-[200px] w-full transition-shadow cursor-pointer bg-cover`}
+                  className={`hover:shadow-lg h-[150px] sm:h-[200px] w-full transition-shadow cursor-pointer bg-cover`}
                   style={{
                     backgroundImage: `url(${category.image || "place.png"})`,
                   }}
@@ -127,7 +127,7 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="py-16">
-        <div className="max-w-[85vw] mx-auto px-4">
+        <div className="max-w-[98vw] lg:max-w-[85vw] mx-auto px-4">
           <div className="text- mb-12">
             <h2 className="text-3xl font-bold text-foreground mb-4">
               Featured Products

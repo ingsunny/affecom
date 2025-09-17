@@ -253,7 +253,7 @@ export default function Categories({ params }) {
 
               <div className="flex items-center gap-4">
                 {/* View Mode Toggle */}
-                <div className="flex items-center gap-1 border rounded-lg p-1">
+                <div className="hidden sm:flex items-center gap-1 border rounded-lg p-1">
                   <Button
                     variant={viewMode === "grid" ? "default" : "ghost"}
                     size="sm"

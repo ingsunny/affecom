@@ -75,8 +75,11 @@ const components = [
 
 export default function Header() {
   return (
-    <NavigationMenu className={"m-auto max-w-[85vw] z-50"} viewport={false}>
-      <div className={"py-5 flex list-none w-full"}>
+    <NavigationMenu
+      className={"m-auto max-w-[98vw] lg:max-w-[85vw] z-50"}
+      viewport={false}
+    >
+      <div className={"py-2 sm:py-5 flex list-none w-full"}>
         <AnimatedSidebar />
         <Link href={"/"} className="pl-2 pr-4">
           <Image
@@ -96,12 +99,12 @@ export default function Header() {
             <Input
               type="text"
               placeholder="Search products..."
-              className="w-full pl-10 focus-visible:ring-[0px] border-gray-300 shadow-none  placeholder:text-gray-500"
+              className="w-full pl-10 text-sm focus-visible:ring-[0px] border-gray-300 shadow-none  placeholder:text-gray-500"
             />
           </div>
         </div>
 
-        <NavigationMenuItem>
+        <NavigationMenuItem className={"sm:block hidden"}>
           <NavigationMenuTrigger
             className={
               "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
@@ -166,7 +169,7 @@ export default function Header() {
             <Link href="/shop">Shop</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className={"sm:block hidden"}>
           <NavigationMenuTrigger
             className={
               "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"

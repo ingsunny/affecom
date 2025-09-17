@@ -264,7 +264,7 @@ export default function AnimatedSidebar() {
 
           {/* Footer */}
           <div className="p-6 border-t border-white/20">
-            <Link href="/categories">
+            <Link href="/shop">
               <Button
                 variant="secondary"
                 className={`w-full bg-white/20 hover:bg-white/30 text-white border-white/30 transition-all duration-700 ${
