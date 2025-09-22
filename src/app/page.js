@@ -152,7 +152,7 @@ export default function Home() {
               <Card
                 key={product.id}
                 className="hover:shadow-lg transition-shadow group p-3"
-                onClick={() => window.open(product.product_link, "_blank")}
+                onClick={() => window.open(product.product_link)}
               >
                 <CardContent className="p-0">
                   <div className="relative bg-white py-2">

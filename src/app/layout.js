@@ -28,12 +28,12 @@ export const metadata = {
     "home appliances",
     "product reviews",
   ],
-  // authors: [{ name: "EasyShop Team", url: "https://easyshop.com" }],
+  authors: [{ name: "EasyShop Team", url: "https://easyshopprice.com" }],
   creator: "EasyShop",
   publisher: "EasyShop",
   robots: "index, follow",
-  // metadataBase: new URL("https://easyshop.com"),
-  themeColor: "#FFD700", // gold color
+  metadataBase: new URL("https://easyshopprice.com"),
+  // themeColor: "#FFD700", // gold color
   icons: {
     icon: "/easyshop.png", // basic favicon
     shortcut: "/easyshop.png",
@@ -42,7 +42,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    // url: "https://easyshop.com",
+    url: "https://easyshopprice.com",
     title: "EasyShop - Discover & Buy the Best Products Online",
     description:
       "EasyShop brings you curated affiliate products from top brands. Compare, review, and shop your favorite gadgets, fashion, home appliances, and more.",

@@ -70,7 +70,7 @@ export default function ShopPage() {
         className={`hover:shadow-lg transition-shadow group p-3 ${
           isListView ? "flex" : ""
         }`}
-        onClick={() => window.open(product.product_link, "_blank")}
+        onClick={() => window.open(product.product_link)}
       >
         <CardContent className={`p-0 ${isListView ? "flex w-full" : ""}`}>
           <div

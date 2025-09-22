@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+easyshop.zip
+/server/easyshop.sql
 
 # next.js
 /.next/
@@ -19,7 +21,7 @@
 
 /admin/
 # production
-/build
+/builc
 
 # misc
 .DS_Store
@@ -40,3 +42,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+

@@ -70,7 +70,7 @@ export default function Categories({ params }) {
   const ProductCard = ({ product, isListView = false }) => (
     <>
       <Card
-        onClick={() => window.open(product.product_link, "_blank")}
+        onClick={() => window.open(product.product_link)}
         className={`hover:shadow-lg transition-shadow group p-3 ${
           isListView ? "flex" : ""
         }`}
