@@ -36,7 +36,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories"
+                  href="#categories"
                   className="text-background/80 hover:text-background transition-colors"
                 >
                   Categories
@@ -44,20 +44,20 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/deals"
+                  href="/shop"
                   className="text-background/80 hover:text-background transition-colors"
                 >
                   Best Deals
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/about"
                   className="text-background/80 hover:text-background transition-colors"
                 >
                   About Us
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>
@@ -79,9 +79,9 @@ export default function Footer() {
                   FAQ
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
-                  href="/returns"
+                  href="#"
                   className="text-background/80 hover:text-background transition-colors"
                 >
                   Returns Policy
@@ -94,7 +94,7 @@ export default function Footer() {
                 >
                   Shipping Info
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>
@@ -124,21 +124,20 @@ export default function Footer() {
                   Affiliate Disclosure
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/cookies"
                   className="text-background/80 hover:text-background transition-colors"
                 >
                   Cookie Policy
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
         <div className="border-t border-background/20 mt-8 pt-8 text-center">
           <p className="text-sm text-background/60">
-            © 2024 EasyShop. All rights reserved. | Affiliate links may earn us
-            a commission at no extra cost to you.
+            © 2025 EasyShop. All rights reserved.
           </p>
         </div>
       </div>

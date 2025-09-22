@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,16 +14,18 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { Star, Filter, Grid, List } from "lucide-react";
 import Image from "next/image";
-import allProducts from "@/data/products";
-import categories from "@/data/categories";
+import { useData } from "@/DataContext";
+import { ProductCardSkeleton } from "@/components/ProductCardSkeleton";
 
 export default function Categories({ params }) {
   const { slug } = params;
   const categoryName = decodeURIComponent(slug);
 
+  const { products: allProducts, categories, loading, error } = useData();
+  const [selectedCategory, setSelectedCategory] = useState(categoryName);
+
   const [sortBy, setSortBy] = useState("featured");
   const [priceRange, setPriceRange] = useState([0, 1000]);
-  const [selectedCategory, setSelectedCategory] = useState(categoryName);
   const [minRating, setMinRating] = useState(0);
   const [viewMode, setViewMode] = useState("grid");
 
@@ -68,6 +70,7 @@ export default function Categories({ params }) {
   const ProductCard = ({ product, isListView = false }) => (
     <>
       <Card
+        onClick={() => window.open(product.product_link, "_blank")}
         className={`hover:shadow-lg transition-shadow group p-3 ${
           isListView ? "flex" : ""
         }`}
@@ -139,11 +142,7 @@ export default function Categories({ params }) {
                 </span>
               </div>
             </div>
-            <Button
-              className="w-full"
-              size={isListView ? "default" : "sm"}
-              onClick={() => window.open(product.product_link, "_blank")}
-            >
+            <Button className="w-full" size={isListView ? "default" : "sm"}>
               View on Amazon
             </Button>
           </div>
@@ -179,8 +178,8 @@ export default function Categories({ params }) {
                   <SelectContent>
                     <SelectItem value="all">All Categories</SelectItem>
                     {categories.map((category) => (
-                      <SelectItem key={category.id} value={category.name}>
-                        {category.name}
+                      <SelectItem key={category} value={category}>
+                        {category}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -300,13 +299,21 @@ export default function Categories({ params }) {
                   : "space-y-4"
               }
             >
-              {filteredAndSortedProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  isListView={viewMode === "list"}
-                />
-              ))}
+              {loading
+                ? // show skeletons
+                  Array.from({ length: 6 }).map((_, i) => (
+                    <ProductCardSkeleton
+                      key={i}
+                      isListView={viewMode === "list"}
+                    />
+                  ))
+                : filteredAndSortedProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      isListView={viewMode === "list"}
+                    />
+                  ))}
             </div>
 
             {filteredAndSortedProducts.length === 0 && (

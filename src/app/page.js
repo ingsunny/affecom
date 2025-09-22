@@ -8,9 +8,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import categories from "@/data/categories";
+import { useData } from "@/DataContext";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
+  const { products, loading, error } = useData();
+  const [randomProducts, setRandomProducts] = useState([]);
+
+  useEffect(() => {
+    if (!products || products.length === 0) return;
+
+    const shuffled = [...products].sort(() => 0.5 - Math.random());
+    setRandomProducts(shuffled.slice(0, 4));
+  }, [products]);
 
   return (
     <div className="min-h-screen ">
@@ -137,16 +148,17 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
+            {randomProducts.map((product) => (
               <Card
                 key={product.id}
                 className="hover:shadow-lg transition-shadow group p-3"
+                onClick={() => window.open(product.product_link, "_blank")}
               >
                 <CardContent className="p-0">
                   <div className="relative bg-white py-2">
                     <div className="relative w-full h-48 rounded-t-lg">
                       <Image
-                        src={product.image || "/placeholder.svg"}
+                        src={product.imageLink || "/placeholder.svg"}
                         alt={product.name}
                         fill
                         className="object-contain group-hover:scale-105 transition-transform"
@@ -156,7 +168,7 @@ export default function Home() {
                       className="absolute top-2 left-2"
                       variant="secondary"
                     >
-                      {product.badge}
+                      {product.brand}
                     </Badge>
                   </div>
                   <div className="">
@@ -177,7 +189,7 @@ export default function Home() {
                         ))}
                       </div>
                       <span className="text-xs text-muted-foreground">
-                        {product.rating} ({product.reviews})
+                        {product.rating} ({product.review})
                       </span>
                     </div>
                     <div className="flex items-center gap-2 mb-3">
@@ -188,11 +200,7 @@ export default function Home() {
                         ${product.originalPrice}
                       </span>
                     </div>
-                    <Button
-                      className="w-full"
-                      size="sm"
-                      onClick={() => window.open(product.amazonLink, "_blank")}
-                    >
+                    <Button className="w-full" size="sm">
                       View on Amazon
                     </Button>
                   </div>
@@ -232,7 +240,7 @@ export default function Home() {
                   <div className="flex items-center gap-3 mb-4">
                     <div className="relative w-12 h-12 overflow-hidden rounded-full">
                       <Image
-                        src={"/testimonial/img1.jpg"}
+                        src={testimonial.img}
                         alt={testimonial.name}
                         fill
                         className="object-cover"
@@ -263,126 +271,26 @@ export default function Home() {
   );
 }
 
-const featuredProducts = [
-  {
-    id: 1,
-    name: "Premium Wireless Headphones",
-    price: 199.99,
-    originalPrice: 249.99,
-    rating: 4.8,
-    reviews: 1247,
-    image: "/product_img/headphone.webp",
-    badge: "Best Seller",
-    amazonLink: "https://amazon.com/product1",
-  },
-  {
-    id: 2,
-    name: "Smart Fitness Watch",
-    price: 299.99,
-    originalPrice: 399.99,
-    rating: 4.6,
-    reviews: 892,
-    image: "/product_img/headphone.webp",
-    badge: "25% OFF",
-    amazonLink: "https://amazon.com/product2",
-  },
-  {
-    id: 3,
-    name: "Portable Bluetooth Speaker",
-    price: 79.99,
-    originalPrice: 99.99,
-    rating: 4.7,
-    reviews: 2156,
-    image: "/product_img/headphone.webp",
-    badge: "Limited Time",
-    amazonLink: "https://amazon.com/product3",
-  },
-  {
-    id: 4,
-    name: "Wireless Charging Pad",
-    price: 39.99,
-    originalPrice: 59.99,
-    rating: 4.5,
-    reviews: 634,
-    image: "/product_img/headphone.webp",
-    badge: "New Arrival",
-    amazonLink: "https://amazon.com/product4",
-  },
-];
-
-// const categories = [
-//   {
-//     name: "Electronics",
-//     image: "/category/electronics.avif",
-//     href: "/categories/electronics",
-//   },
-//   {
-//     name: "Home & Garden",
-//     image: "/category/home-n-garden.avif",
-//     href: "/categories/home-garden",
-//   },
-//   {
-//     name: "Fashion",
-//     image: "/category/fashion.avif",
-//     href: "/categories/fashion",
-//   },
-//   {
-//     name: "Sports & Outdoors",
-//     image: "/category/sport.avif",
-//     href: "/categories/sports",
-//   },
-//   {
-//     name: "Health & Beauty",
-//     image: "/category/health-n-beauty.avif",
-//     href: "/categories/health",
-//   },
-//   {
-//     name: "Dogs Food & Treat",
-//     image: "/category/dog-food.jpg",
-//     href: "/categories/books",
-//   },
-//   {
-//     name: "Home & Garden",
-//     image: "/category/home-n-garden.avif",
-//     href: "/categories/home-garden",
-//   },
-//   {
-//     name: "Fashion",
-//     image: "/category/fashion.avif",
-//     href: "/categories/fashion",
-//   },
-//   {
-//     name: "Sports & Outdoors",
-//     image: "/category/sport.avif",
-//     href: "/categories/sports",
-//   },
-//   {
-//     name: "Health & Beauty",
-//     image: "/category/health-n-beauty.avif",
-//     href: "/categories/health",
-//   },
-// ];
-
 const testimonials = [
   {
-    name: "Sarah Johnson",
+    name: "John Smith",
     rating: 5,
     comment:
       "Amazing products and fast delivery! I found exactly what I was looking for at great prices.",
-    avatar: "/diverse-woman-avatar.png",
+    img: "/testimonial/img1.jpg",
   },
   {
-    name: "Mike Chen",
+    name: "David Johnson",
     rating: 5,
     comment:
       "The product recommendations are spot on. Saved me hours of research and got the best deals.",
-    avatar: "/man-avatar.png",
+    img: "/testimonial/img2.jpg",
   },
   {
-    name: "Emily Davis",
+    name: "Michael Brown",
     rating: 4,
     comment:
       "Great selection and honest reviews. The affiliate links make shopping so much easier.",
-    avatar: "/woman-avatar-2.png",
+    img: "/testimonial/img3.jpg",
   },
 ];

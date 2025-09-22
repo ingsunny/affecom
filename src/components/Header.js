@@ -34,6 +34,7 @@ import {
 import Image from "next/image";
 import AnimatedSidebar from "./Sidebar";
 import { Separator } from "./ui/separator";
+import SearchOverlay from "./SearchOverlay";
 
 const components = [
   {
@@ -90,7 +91,8 @@ export default function Header() {
             alt={"logo"}
           />
         </Link>
-        <div className="flex-1">
+
+        {/* <div className="flex-1">
           <div
             className={`relative transition-all duration-700 border-none`}
             style={{ transitionDelay: "500ms" }}
@@ -102,9 +104,11 @@ export default function Header() {
               className="w-full pl-10 text-sm focus-visible:ring-[0px] border-gray-300 shadow-none  placeholder:text-gray-500"
             />
           </div>
-        </div>
+        </div> */}
 
-        <NavigationMenuItem className={"sm:block hidden"}>
+        <SearchOverlay />
+
+        {/* <NavigationMenuItem className={"sm:block hidden"}>
           <NavigationMenuTrigger
             className={
               "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
@@ -160,7 +164,7 @@ export default function Header() {
               </li>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         <NavigationMenuItem>
           <NavigationMenuLink
             asChild
