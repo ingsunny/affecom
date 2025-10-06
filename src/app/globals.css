@@ -138,3 +138,30 @@
   background: rgba(0,0,0,0.2);
   border-radius: 8px;
 }
+
+
+/* Custom styles for Swiper navigation arrows and pagination */
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+  color: #ffffff; /* A neutral white color for the arrows */
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.mySwiper .swiper-button-prev:after,
+.mySwiper .swiper-button-next:after {
+  font-size: 18px; /* Make the arrow icon smaller */
+  font-weight: bold;
+}
+
+.mySwiper .swiper-pagination-bullet {
+  background: #ffffff; /* White inactive dots */
+  opacity: 0.7;
+}
+
+.mySwiper .swiper-pagination-bullet-active {
+  background: #3498DB; /* A primary color for the active dot */
+  opacity: 1;
+}

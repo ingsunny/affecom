@@ -126,7 +126,8 @@ export default function ShopPage() {
                   {product.rating} ({product.review})
                 </span>
               </div>
-              <div className="flex items-center gap-2 mb-3">
+
+              {/* <div className="flex items-center gap-2 mb-3">
                 <span
                   className={`font-bold text-primary ${
                     isListView ? "text-xl" : "text-lg"
@@ -137,9 +138,12 @@ export default function ShopPage() {
                 <span className="text-sm text-muted-foreground line-through">
                   ${product.originalPrice}
                 </span>
-              </div>
+              </div> */}
             </div>
-            <Button className="w-full" size={isListView ? "default" : "sm"}>
+            <Button
+              className="w-full mt-2"
+              size={isListView ? "default" : "sm"}
+            >
               View on Amazon
             </Button>
           </div>
@@ -184,7 +188,7 @@ export default function ShopPage() {
               </div>
 
               {/* Price Range Filter */}
-              <div className="mb-6">
+              {/* <div className="mb-6">
                 <label className="text-sm font-medium mb-2 block">
                   Price Range: ${priceRange[0]} - ${priceRange[1]}
                 </label>
@@ -196,7 +200,7 @@ export default function ShopPage() {
                   step={10}
                   className="mt-2"
                 />
-              </div>
+              </div> */}
 
               {/* Rating Filter */}
               <div className="mb-6">
