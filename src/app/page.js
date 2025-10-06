@@ -40,75 +40,75 @@ import { ShoppingCart, ArrowRightCircle } from "lucide-react";
 const storesData = [
   {
     id: 1,
-    name: "Myntra",
-    logoUrl: "https://logo.clearbit.com/myntra.com",
-    offerText: "Min. 60% Off",
-    offerValue: 60,
-    link: "#",
+    name: "Walmart",
+    logoUrl: "https://logo.clearbit.com/walmart.com",
+    offerText: "Up to 50% Off",
+    offerValue: 50,
+    link: "https://www.walmart.com",
   },
   {
     id: 2,
-    name: "Flipkart",
-    logoUrl: "https://logo.clearbit.com/flipkart.com",
-    offerText: "Upto 50% Off",
-    offerValue: 50,
-    link: "#",
+    name: "Target",
+    logoUrl: "https://logo.clearbit.com/target.com",
+    offerText: "Save 30% on Essentials",
+    offerValue: 30,
+    link: "https://www.target.com",
   },
   {
     id: 3,
-    name: "Ajio",
-    logoUrl: "https://logo.clearbit.com/ajio.com",
-    offerText: "Flat 75% Off",
-    offerValue: 75,
-    link: "#",
+    name: "Best Buy",
+    logoUrl: "https://logo.clearbit.com/bestbuy.com",
+    offerText: "Up to 40% Off Electronics",
+    offerValue: 40,
+    link: "https://www.bestbuy.com",
   },
   {
     id: 4,
     name: "Amazon",
-    logoUrl: "https://logo.clearbit.com/amazon.in",
-    offerText: "Upto 80% Off",
-    offerValue: 80,
-    link: "#",
+    logoUrl: "https://logo.clearbit.com/amazon.com",
+    offerText: "Up to 70% Off Daily Deals",
+    offerValue: 70,
+    link: "https://www.amazon.com",
   },
   {
     id: 5,
-    name: "Nykaa",
-    logoUrl: "https://logo.clearbit.com/nykaa.com",
-    offerText: "Upto 45% Off",
-    offerValue: 45,
-    link: "#",
+    name: "Sephora",
+    logoUrl: "https://logo.clearbit.com/sephora.com",
+    offerText: "Beauty Deals – 25% Off",
+    offerValue: 25,
+    link: "https://www.sephora.com",
   },
   {
     id: 6,
-    name: "Puma",
-    logoUrl: "https://logo.clearbit.com/puma.com",
-    offerText: "Min. 30% Off",
-    offerValue: 30,
-    link: "#",
+    name: "Nike",
+    logoUrl: "https://logo.clearbit.com/nike.com",
+    offerText: "Extra 20% Off Sale",
+    offerValue: 20,
+    link: "https://www.nike.com",
   },
   {
     id: 7,
     name: "Adidas",
     logoUrl: "https://logo.clearbit.com/adidas.com",
-    offerText: "Starting at 999",
-    offerValue: 58,
-    link: "#",
+    offerText: "Up to 50% Off Footwear",
+    offerValue: 50,
+    link: "https://www.adidas.com",
   },
   {
     id: 8,
-    name: "Bewakoof",
-    logoUrl: "https://logo.clearbit.com/bewakoof.com",
-    offerText: "Buy 1 Get 1 Free",
-    offerValue: 50,
-    link: "#",
+    name: "Macy's",
+    logoUrl: "https://logo.clearbit.com/macys.com",
+    offerText: "Up to 60% Off Fashion",
+    offerValue: 60,
+    link: "https://www.macys.com",
   },
   {
     id: 9,
-    name: "Tata Cliq",
-    logoUrl: "https://logo.clearbit.com/tatacliq.com",
-    offerText: "Upto 70% Off",
-    offerValue: 70,
-    link: "#",
+    name: "Costco",
+    logoUrl: "https://logo.clearbit.com/costco.com",
+    offerText: "Save on Bulk & Groceries",
+    offerValue: 35,
+    link: "https://www.costco.com",
   },
 ];
 
@@ -559,7 +559,7 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
           isOpen ? "max-h-96 mt-4" : "max-h-0"
         }`}
       >
-        <p className="text-gray-600">{answer}</p>
+        <p className="text-gray-600 whitespace-pre-line">{answer}</p>
       </div>
     </div>
   );
@@ -575,7 +575,7 @@ const FaqSection = () => {
 
   return (
     <section className="bg-muted/40 py-16">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
             Frequently Asked Questions
@@ -599,6 +599,50 @@ const FaqSection = () => {
     </section>
   );
 };
+
+const faqData = [
+  {
+    question: "What is EasyShop?",
+    answer: `EasyShop is an affiliate platform that helps you find the best deals, discounts, and live sales from top online stores. We curate the latest offers so you can shop smart and save more.
+
+1. Browse EasyShop to discover the latest deals and discounts.
+2. Click on "Activate Deal" or "Get Coupon".
+3. You’ll be redirected to the retailer’s website. Complete your shopping there.
+4. Enjoy exclusive savings and cashback rewards when applicable.
+
+Where does the cashback come from?  
+EasyShop partners with online stores to bring you the best deals. When you shop through us, we earn a commission from the retailer and pass a portion of it back to you as cashback.`,
+  },
+  {
+    question: "How does EasyShop work?",
+    answer: `EasyShop partners with leading e-commerce websites to bring you exclusive deals and discounts. When you shop through our links, you get access to the best offers, and we earn a small commission at no extra cost to you.
+
+1. Exclusive Discounts & Cashback – latest discounts & cashback deals.  
+2. Smart Shopping Assistant – Chrome extension & Android app help you shop smarter.  
+3. Special Coupon Codes – exclusive coupons from top brands.  
+4. One-Stop Deal Finder – browse & compare deals in one place.  
+5. Product-Specific Deals – find gadget/fashion deals with cashback info.  
+6. Stay Updated – subscribe to our newsletter.`,
+  },
+  {
+    question: "What are the benefits of using EasyShop?",
+    answer: `• Get real-time updates on live sales and limited-time deals.  
+• Discover the latest discounts from multiple online stores in one place.  
+• Shop conveniently with verified and curated offers.`,
+  },
+  {
+    question: "How often are deals updated on EasyShop?",
+    answer: `We update deals and offers daily to ensure you get the latest and best discounts from various e-commerce platforms.`,
+  },
+  {
+    question: "Is EasyShop free to use?",
+    answer: `Yes! EasyShop is completely free to use. You don’t need to sign up or pay any fees to access the best deals and discounts.`,
+  },
+  {
+    question: "Does EasyShop sell products directly?",
+    answer: `No, EasyShop does not sell products. We direct you to trusted online retailers where you can complete your purchase at the best available price.`,
+  },
+];
 
 const testimonials = [
   {
@@ -632,28 +676,5 @@ const testimonials = [
     rating: 5,
     comment:
       "This is my go-to store for all my needs. They have never disappointed me. Consistent quality, fair prices, and reliable delivery every single time. A trustworthy brand.",
-  },
-];
-
-const faqData = [
-  {
-    question: "What is your return policy?",
-    answer:
-      "We offer a 30-day return policy for all unused and unopened items. Please visit our returns page for detailed instructions and to initiate a return process. Items must be in their original packaging.",
-  },
-  {
-    question: "How do I track my order?",
-    answer:
-      "Once your order has shipped, you will receive an email with a tracking number and a link to the carrier's website. You can also log in to your account on our website to view your order status and tracking information.",
-  },
-  {
-    question: "Do you ship internationally?",
-    answer:
-      "Yes, we ship to over 50 countries worldwide. International shipping costs and delivery times vary by location. Please proceed to checkout to see the available shipping options and costs for your country.",
-  },
-  {
-    question: "How can I contact customer support?",
-    answer:
-      "Our customer support team is available 24/7. You can reach us via email at support@example.com, by phone at +91-123-456-7890, or through the live chat feature on our website.",
   },
 ];
