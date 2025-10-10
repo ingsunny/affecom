@@ -46,11 +46,12 @@ export default function SearchOverlay({ viewMode = "grid" }) {
                           isListView ? "rounded-l-lg rounded-tr-none" : ""
                         }`}
           >
-            <Image
+            <img
               src={product.imageLink || "/placeholder.svg"}
               alt={product.name}
-              fill
-              className="object-contain group-hover:scale-105 transition-transform"
+              className={`${
+                isListView ? "h-48" : "h-full"
+              } object-contain w-auto mx-auto group-hover:scale-105 transition-transform`}
             />
           </div>
           <Badge className="absolute top-2 left-2" variant="secondary">

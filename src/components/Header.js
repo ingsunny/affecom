@@ -179,7 +179,7 @@ export default function Header() {
               "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
             }
           >
-            Welcome
+            Top Store
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-4">
@@ -190,7 +190,7 @@ export default function Header() {
                     "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
                   }
                 >
-                  <Link href="#">Login</Link>
+                  <Link href="/brand/amazon">Amazon</Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink
                   asChild
@@ -198,7 +198,57 @@ export default function Header() {
                     "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
                   }
                 >
-                  <Link href="#">Signup</Link>
+                  <Link href="/brand/ebay">eBay</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="/brand/etsy">Etsy</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="/brand/walmart">Walmart</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="/brand/target">Target</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href={`/brand/${encodeURIComponent("The Home Depot")}`}>
+                    The Home Depot
+                  </Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="/brand/nike">Nike</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="/brand/wayfair">Wayfair</Link>
                 </NavigationMenuLink>
               </li>
             </ul>

@@ -1,5 +1,5 @@
 import express from "express";
-import db from "./config/db.js";
+import db from "./config/db.js"; // Assuming this is your database connection file
 import cors from "cors";
 
 const app = express();
@@ -8,110 +8,89 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-// --- Get products by category ---
-app.get("/api/products", async (req, res) => {
+// Helper function to handle database queries and server errors
+const executeQuery = async (query, values, res) => {
   try {
-    const { category } = req.query;
-
-    let query = "SELECT * FROM products";
-    const values = [];
-
-    if (category && category !== "all") {
-      query += " WHERE category = ?";
-      values.push(category);
-    }
-
     const [rows] = await db.execute(query, values);
-
-    res.json(rows);
+    // Renaming columns to client-friendly camelCase or stripping the 'p.' prefix
+    const formattedRows = rows.map((row) => ({
+      id: row.id,
+      category: row.category,
+      name: row.name,
+      brand: row.brand,
+      rating: row.rating,
+      review: row.review,
+      price: row.price,
+      originalPrice: row.originalPrice,
+      imageLink: row.imageLink,
+      product_link: row.product_link,
+    }));
+    res.json(formattedRows);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
+    console.error("Database Error:", err);
+    res.status(500).json({ error: "Server error during database query." });
   }
+};
+
+// --- 1. GET all products (or by category/brand filter via query params) ---
+// Your original route, slightly modified to handle 'all_products' logic.
+app.get("/api/all_products", async (req, res) => {
+  // You can still use 'category' as a filter on this endpoint
+  const { category } = req.query;
+
+  let query = "SELECT * FROM products";
+  const values = [];
+
+  if (category && category !== "all") {
+    query += " WHERE category = ?";
+    values.push(category);
+  }
+
+  await executeQuery(query, values, res);
 });
 
-// --------------------------------------------------
-// NEW: UPDATE a Product (Edit)
-// --------------------------------------------------
-app.put("/api/products/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const {
-      category,
-      name,
-      brand,
-      rating,
-      review,
-      price,
-      originalPrice,
-      imageLink,
-      product_link,
-    } = req.body;
+// --- 2. GET products by specific brand ---
+// Example: GET /api/products/Amazon
+app.get("/api/products/:brand", async (req, res) => {
+  const brand = decodeURIComponent(req.params.brand);
 
-    // Basic validation
-    if (!name || !price || !category) {
-      return res
-        .status(400)
-        .json({ error: "Missing required fields: name, price, category" });
-    }
-
-    const query = `
-      UPDATE products 
-      SET 
-        category = ?, name = ?, brand = ?, rating = ?, review = ?, 
-        price = ?, originalPrice = ?, imageLink = ?, product_link = ?
-      WHERE id = ?
-    `;
-
-    const values = [
-      category,
-      name,
-      brand,
-      rating,
-      review,
-      price,
-      originalPrice,
-      imageLink,
-      product_link,
-      id,
-    ];
-
-    const [result] = await db.execute(query, values);
-
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-
-    res.status(200).json({ message: "Product updated successfully", id: id });
-  } catch (err) {
-    console.error(`PUT /api/products/${req.params.id} error:`, err);
-    res.status(500).json({ error: "Server error updating product" });
+  if (!brand) {
+    return res.status(400).json({ error: "Brand name is required." });
   }
+
+  // Use LIKE for a more flexible search, or '=' for an exact match.
+  // We'll use '=' for a direct brand match here.
+  const query = "SELECT * FROM products WHERE brand = ?";
+  const values = [brand];
+
+  await executeQuery(query, values, res);
 });
 
-// --------------------------------------------------
-// NEW: DELETE a Product
-// --------------------------------------------------
-app.delete("/api/products/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const query = "DELETE FROM products WHERE id = ?";
+// --- Your original route (retained and simplified) ---
+// Handles products with an optional category filter. Kept for backwards compatibility
+// with your initial requirement. You can consider removing it if /api/all_products
+// is sufficient.
+app.get("/api/products", async (req, res) => {
+  const { category } = req.query;
 
-    const [result] = await db.execute(query, [id]);
+  let query = "SELECT * FROM products";
+  const values = [];
 
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-
-    res.status(200).json({ message: "Product deleted successfully" });
-    // Or you can send a 204 No Content response
-    // res.status(204).send();
-  } catch (err) {
-    console.error(`DELETE /api/products/${req.params.id} error:`, err);
-    res.status(500).json({ error: "Server error deleting product" });
+  if (category && category !== "all") {
+    query += " WHERE category = ?";
+    values.push(category);
   }
+
+  await executeQuery(query, values, res);
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Endpoints available:`);
+  console.log(`- http://localhost:${PORT}/api/all_products`);
+  console.log(
+    `- http://localhost:${PORT}/api/all_products?category=Electronics`
+  );
+  console.log(`- http://localhost:${PORT}/api/products/Amazon`);
+  console.log(`- http://localhost:${PORT}/api/products/Etsy`);
 });

@@ -35,82 +35,6 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { ShoppingCart, ArrowRightCircle } from "lucide-react";
 
 // --- MOCK DATA for stores ---
-// In a real app, this would come from an API.
-// Using a logo service for placeholder images.
-const storesData = [
-  {
-    id: 1,
-    name: "Walmart",
-    logoUrl: "https://logo.clearbit.com/walmart.com",
-    offerText: "Up to 50% Off",
-    offerValue: 50,
-    link: "https://www.walmart.com",
-  },
-  {
-    id: 2,
-    name: "Target",
-    logoUrl: "https://logo.clearbit.com/target.com",
-    offerText: "Save 30% on Essentials",
-    offerValue: 30,
-    link: "https://www.target.com",
-  },
-  {
-    id: 3,
-    name: "Best Buy",
-    logoUrl: "https://logo.clearbit.com/bestbuy.com",
-    offerText: "Up to 40% Off Electronics",
-    offerValue: 40,
-    link: "https://www.bestbuy.com",
-  },
-  {
-    id: 4,
-    name: "Amazon",
-    logoUrl: "https://logo.clearbit.com/amazon.com",
-    offerText: "Up to 70% Off Daily Deals",
-    offerValue: 70,
-    link: "https://www.amazon.com",
-  },
-  {
-    id: 5,
-    name: "Sephora",
-    logoUrl: "https://logo.clearbit.com/sephora.com",
-    offerText: "Beauty Deals – 25% Off",
-    offerValue: 25,
-    link: "https://www.sephora.com",
-  },
-  {
-    id: 6,
-    name: "Nike",
-    logoUrl: "https://logo.clearbit.com/nike.com",
-    offerText: "Extra 20% Off Sale",
-    offerValue: 20,
-    link: "https://www.nike.com",
-  },
-  {
-    id: 7,
-    name: "Adidas",
-    logoUrl: "https://logo.clearbit.com/adidas.com",
-    offerText: "Up to 50% Off Footwear",
-    offerValue: 50,
-    link: "https://www.adidas.com",
-  },
-  {
-    id: 8,
-    name: "Macy's",
-    logoUrl: "https://logo.clearbit.com/macys.com",
-    offerText: "Up to 60% Off Fashion",
-    offerValue: 60,
-    link: "https://www.macys.com",
-  },
-  {
-    id: 9,
-    name: "Costco",
-    logoUrl: "https://logo.clearbit.com/costco.com",
-    offerText: "Save on Bulk & Groceries",
-    offerValue: 35,
-    link: "https://www.costco.com",
-  },
-];
 
 const TopStoresGrid = () => {
   return (
@@ -380,19 +304,18 @@ export default function Home() {
               >
                 <CardContent className="p-0">
                   <div className="relative bg-white py-2">
-                    <div className="relative w-full h-48 rounded-t-lg">
-                      <Image
+                    <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
+                      <img
                         src={product.imageLink || "/placeholder.svg"}
                         alt={product.name}
-                        fill
-                        className="object-contain group-hover:scale-105 transition-transform"
+                        className="object-contain h-48 mx-auto group-hover:scale-105 transition-transform"
                       />
                     </div>
                     <Badge
                       className="absolute top-2 left-2"
                       variant="secondary"
                     >
-                      {product.brand}
+                      {product.brand.replace(/Brand:\s*/gi, "")}
                     </Badge>
                   </div>
                   <div className="">
@@ -425,7 +348,7 @@ export default function Home() {
                       </span>
                     </div>
                     <Button className="w-full" size="sm">
-                      View on Amazon
+                      View Product
                     </Button>
                   </div>
                 </CardContent>
@@ -599,6 +522,74 @@ const FaqSection = () => {
     </section>
   );
 };
+
+const storesData = [
+  {
+    id: 1,
+    name: "Amazon",
+    logoUrl: "https://logo.clearbit.com/amazon.com",
+    offerText: "Up to 50% Off",
+    offerValue: 50,
+    link: "/brand/amazon",
+  },
+  {
+    id: 2,
+    name: "Ebay",
+    logoUrl: "https://logo.clearbit.com/ebay.com",
+    offerText: "Save 30% on Essentials",
+    offerValue: 30,
+    link: "/brand/ebay",
+  },
+  {
+    id: 3,
+    name: "Etsy",
+    logoUrl: "https://logo.clearbit.com/etsy.com",
+    offerText: "Up to 40% Off Electronics",
+    offerValue: 40,
+    link: "/brand/etsy",
+  },
+  {
+    id: 4,
+    name: "Walmart",
+    logoUrl: "https://logo.clearbit.com/walmart.com",
+    offerText: "Up to 70% Off Daily Deals",
+    offerValue: 70,
+    link: "/brand/walmart",
+  },
+  {
+    id: 5,
+    name: "Target",
+    logoUrl: "https://logo.clearbit.com/target.com",
+    offerText: "Beauty Deals – 25% Off",
+    offerValue: 25,
+    link: "/brand/target",
+  },
+  {
+    id: 6,
+    name: "Nike",
+    logoUrl: "https://logo.clearbit.com/nike.com",
+    offerText: "Extra 20% Off Sale",
+    offerValue: 20,
+    link: "/brand/nike",
+  },
+  {
+    id: 7,
+    name: "The Home Depot",
+    logoUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNj4CYHBtWd7sMaHP8gjsCdauWTuVqefMOtQ&s",
+    offerText: "Up to 50% Off Footwear",
+    offerValue: 50,
+    link: `/brand/${encodeURIComponent("The Home Depot")}`,
+  },
+  {
+    id: 8,
+    name: "Wayfair",
+    logoUrl: "https://logo.clearbit.com/wayfair.com",
+    offerText: "Up to 60% Off Furniture",
+    offerValue: 60,
+    link: "/brand/wayfair",
+  },
+];
 
 const faqData = [
   {
