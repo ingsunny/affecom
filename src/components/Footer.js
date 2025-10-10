@@ -36,28 +36,44 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#categories"
+                  href="/brand/amazon"
                   className="text-background/80 hover:text-background transition-colors"
                 >
-                  Categories
+                  Amazon
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/shop"
+                  href="/brand/etsy"
                   className="text-background/80 hover:text-background transition-colors"
                 >
-                  Best Deals
+                  Etsy
+                </Link>
+              </li>{" "}
+              <li>
+                <Link
+                  href="/brand/alibaba"
+                  className="text-background/80 hover:text-background transition-colors"
+                >
+                  Alibaba
+                </Link>
+              </li>{" "}
+              <li>
+                <Link
+                  href="/brand/walmart"
+                  className="text-background/80 hover:text-background transition-colors"
+                >
+                  Walmart
+                </Link>
+              </li>{" "}
+              <li>
+                <Link
+                  href="/brand/ebay"
+                  className="text-background/80 hover:text-background transition-colors"
+                >
+                  Ebay
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  href="/about"
-                  className="text-background/80 hover:text-background transition-colors"
-                >
-                  About Us
-                </Link>
-              </li> */}
             </ul>
           </div>
           <div>

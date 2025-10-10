@@ -92,80 +92,9 @@ export default function Header() {
           />
         </Link>
 
-        {/* <div className="flex-1">
-          <div
-            className={`relative transition-all duration-700 border-none`}
-            style={{ transitionDelay: "500ms" }}
-          >
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-            <Input
-              type="text"
-              placeholder="Search products..."
-              className="w-full pl-10 text-sm focus-visible:ring-[0px] border-gray-300 shadow-none  placeholder:text-gray-500"
-            />
-          </div>
-        </div> */}
-
         <SearchOverlay />
 
-        {/* <NavigationMenuItem className={"sm:block hidden"}>
-          <NavigationMenuTrigger
-            className={
-              "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
-            }
-          >
-            Brand
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
-              <li>
-                <NavigationMenuLink
-                  asChild
-                  className={
-                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
-                  }
-                >
-                  <Link href="#" className="">
-                    BestBuy
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink
-                  asChild
-                  className={
-                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
-                  }
-                >
-                  <Link href="#">Home Depot</Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink
-                  asChild
-                  className={
-                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
-                  }
-                >
-                  <Link href="#">Whirlpool</Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink
-                  asChild
-                  className={
-                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
-                  }
-                >
-                  <Link href="#">Petco</Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink
-                  asChild
-                  className={
-                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
-                  }
-                >
-                  <Link href="#">Philips</Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem> */}
-        <NavigationMenuItem>
+        <NavigationMenuItem className={"sm:block hidden"}>
           <NavigationMenuLink
             asChild
             className={`${navigationMenuTriggerStyle()} text-[16px] font-semibold text-black/90 hover:text-black/90`}
@@ -173,7 +102,7 @@ export default function Header() {
             <Link href="/shop">Shop</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        <NavigationMenuItem className={"sm:block hidden"}>
+        <NavigationMenuItem className={""}>
           <NavigationMenuTrigger
             className={
               "hover:bg-[#f2f2ec] text-[16px] font-semibold text-black/90"
@@ -181,8 +110,12 @@ export default function Header() {
           >
             Top Store
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
+          <NavigationMenuContent
+            className={
+              "absolute min-w-[130px] lg:min-w-[200px] -left-5 lg:left-0 "
+            }
+          >
+            <ul className="grid  gap-4 ">
               <li>
                 <NavigationMenuLink
                   asChild
@@ -199,6 +132,14 @@ export default function Header() {
                   }
                 >
                   <Link href="/brand/ebay">eBay</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink
+                  asChild
+                  className={
+                    "hover:bg-[#f2f2ec] text-black/90 hover:text-black/90"
+                  }
+                >
+                  <Link href="/brand/Alibaba">Alibaba</Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink
                   asChild

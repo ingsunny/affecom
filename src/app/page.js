@@ -541,6 +541,14 @@ const storesData = [
     link: "/brand/ebay",
   },
   {
+    id: 9,
+    name: "Alibaba",
+    logoUrl: "https://logo.clearbit.com/alibaba.com",
+    offerText: "Save 25% on Fashion",
+    offerValue: 25,
+    link: "/brand/alibaba",
+  },
+  {
     id: 3,
     name: "Etsy",
     logoUrl: "https://logo.clearbit.com/etsy.com",
